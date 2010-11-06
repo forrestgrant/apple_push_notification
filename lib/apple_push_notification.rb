@@ -32,7 +32,7 @@ module ApplePushNotification
     @@apn_enviroment = enviroment.to_sym
     @@apn_host = self.apn_production? ? "gateway.push.apple.com" : "gateway.sandbox.push.apple.com"
     cert = self.apn_production? ? "apn_production.pem" : "apn_development.pem"
-    path = File.join(File.expand_path(::Rails.root), "config", "certs", cert)
+    path = File.join(File.expand_path(::Rails.root.to_s), "config", "certs", cert)
     @@apn_cert = File.exists?(path) ? File.read(path) : nil
     raise "Missing apple push notification certificate in #{path}" unless @@apn_cert
   end
