@@ -52,6 +52,7 @@ module ApplePushNotification
     ssl.connect
 
     ssl.write(self.apn_message_for_sending(options))
+    puts ssl.read
     ssl.close
     s.close
   rescue SocketError => error
